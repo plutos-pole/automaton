@@ -16,6 +16,9 @@ export default class Cell {
 		if (aliveNeighbors < 2 || aliveNeighbors > 3) {
 			return new Cell()
 		}
+		if (this.isAlive == false && aliveNeighbors !== 3) {
+			return new Cell()
+		}
 		childCell = new Cell()
 		childCell.isAlive = true
 		return childCell 

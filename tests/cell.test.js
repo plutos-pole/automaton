@@ -37,11 +37,19 @@ describe("A cell", () => {
 		const newCell = cell.evaluate(neighbors)
 		assert.strictEqual(newCell.isAlive, false)
 	})
-	it ("lives if the number of alive neighbors is 2", () => {
+	it ("lives if the number of alive neighbors is 2 and it's alive", () => {
 		let neighbors = generateNeighbors(1,0,1,0,0)
+		cell.isAlive = true
 		const newCell = cell.evaluate(neighbors)
 		assert.strictEqual(newCell.isAlive, true)
 	})
+
+	it ("stays death if the number of alive neighbors is not exactly 3 and it's death", () => {
+		let neighbors = generateNeighbors(1,0,1,0,0)
+		const newCell = cell.evaluate(neighbors)
+		assert.strictEqual(newCell.isAlive, false)
+	})
+
 	it ("reborns if the number of alive neighbors is 3", () => {
 		let neighbors = generateNeighbors(1,0,1,0,1)
 		const newCell = cell.evaluate(neighbors)
