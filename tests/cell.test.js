@@ -1,4 +1,5 @@
 import Cell from "../Cell.mjs"
+import { generateNeighbors } from "./test_utills.js";
 import { strict as assert } from 'node:assert';
 import { before, beforeEach, describe, it, test } from 'node:test'
 
@@ -23,6 +24,28 @@ describe("A cell", () => {
 		const neighbors = []
 		const new_cell = cell.evaluate(neighbors)
 		assert.strictEqual(new_cell instanceof Cell, true)
+	})
+
+	it ("dies if the number of alive members is less than 2", () => {
+		let neighbors = generateNeighbors(1,0,0,0)
+		const newCell = cell.evaluate(neighbors)
+		assert.strictEqual(newCell.isAlive, false)
+	})
+
+	it ("dies if the number of alive members is more than 3", () => {
+		let neighbors = generateNeighbors(1,0,1,1,1)
+		const newCell = cell.evaluate(neighbors)
+		assert.strictEqual(newCell.isAlive, false)
+	})
+	it ("lives if the number of alive neighbors is 2", () => {
+		let neighbors = generateNeighbors(1,0,1,0,0)
+		const newCell = cell.evaluate(neighbors)
+		assert.strictEqual(newCell.isAlive, true)
+	})
+	it ("reborns if the number of alive neighbors is 3", () => {
+		let neighbors = generateNeighbors(1,0,1,0,1)
+		const newCell = cell.evaluate(neighbors)
+		assert.strictEqual(newCell.isAlive, true)
 	})
 
 })

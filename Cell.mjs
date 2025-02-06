@@ -1,12 +1,23 @@
 export default class Cell {
 
-	constructor(x, y) {
-		this.posX = x
-		this.posY = y
-		this.isAlive = false
+	constructor(x, y, isAlive) {
+		this.posX = x || 0
+		this.posY = y || 0
+		this.isAlive = isAlive || false
 	}
 
 	evaluate(neighbors) {
-		return new Cell(this.posX, this.posY)
+		let childCell
+		let aliveNeighbors = 0
+		neighbors.forEach((cell) => {
+			if (cell.isAlive) aliveNeighbors++
+		})
+
+		if (aliveNeighbors < 2 || aliveNeighbors > 3) {
+			return new Cell()
+		}
+		childCell = new Cell()
+		childCell.isAlive = true
+		return childCell 
 	}
 }
