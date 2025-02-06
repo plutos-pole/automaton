@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "node --test --watch",
-    "dev": "nodemon --exec http-server ."
+    "dev": "nodemon --exec http-server . -c-1"
   },
   "keywords": [],
   "author": "",
