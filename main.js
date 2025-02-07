@@ -5,7 +5,6 @@ import {WIDTH, HEIGHT, COLS, ROWS} from "./config.js"
 
 const button = document.getElementById("play")
 const restart = document.getElementById("restart")
-let animationID
 document.addEventListener("DOMContentLoaded", () => {
 	const game = new Game(WIDTH, HEIGHT)
 	game.init(COLS, ROWS)
@@ -15,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	button.addEventListener("click", () => {
 		game.isRunning = true;
-		animationID = window.requestAnimationFrame(game.tick.bind(game))
+		window.requestAnimationFrame(game.tick.bind(game))
 	})
 	restart.addEventListener("click", () => {
 		game.isRunning = false
