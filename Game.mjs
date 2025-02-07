@@ -44,7 +44,7 @@ export default class Game {
 				const posX = x * CELL_DIMENSION
 				const posY = y * CELL_DIMENSION
 				if (this.board.table[y][x].isAlive) {
-					this.ctx.fillStyle = `rgb(${COLOR_BLACK})`
+					this.ctx.fillStyle = color || `rgb(${COLOR_BLACK})`
 					this.ctx.fillRect(posX + 2, posY + 2, CELL_DIMENSION - 4, CELL_DIMENSION - 4)
 				} else {
 					this.ctx.clearRect(posX + 2, posY + 2, CELL_DIMENSION -4, CELL_DIMENSION -4)
@@ -87,7 +87,7 @@ export default class Game {
 			}
 		}
 		this.display()
-		this.score.innerText = `Tick: ${this.generation}`
+		this.score.innerText = `Generation: ${this.generation}`
 	}
 
 
