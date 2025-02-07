@@ -23,3 +23,6 @@ To run tests, run the following command
   npm run test
 ```
 
+## Screenshots
+
+![running](assets/running.gif)
